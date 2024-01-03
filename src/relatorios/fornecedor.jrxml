@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fornecedor" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report\Fornecedor\DataAdapter.jrdax"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM fornecedor ORDER BY categoria]]>
+	</queryString>
+	<field name="fornecedorID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="fornecedorID"/>
+		<property name="com.jaspersoft.studio.field.label" value="fornecedorID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fornecedor"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fornecedor"/>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="fornecedor"/>
+	</field>
+	<variable name="numFornecedores" class="java.lang.Integer" resetType="Group" resetGroup="categoriaForn" calculation="Count">
+		<variableExpression><![CDATA[$F{nome}]]></variableExpression>
+	</variable>
+	<group name="categoriaForn">
+		<groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<frame>
+					<reportElement mode="Opaque" x="1" y="-1" width="554" height="40" backcolor="#E02F26" uuid="340344f2-ab05-43b2-925c-742083c40103"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textField>
+						<reportElement x="402" y="4" width="150" height="35" uuid="2c6b451c-019a-4eec-a870-082c5cc58ae7"/>
+						<textElement>
+							<font size="24"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement style="Column header" x="8" y="5" width="110" height="30" forecolor="#000000" uuid="ac0929bf-0887-49f9-aadd-76af8acb5273">
+							<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03009de6-feb3-4f11-bd03-d8f81c0543b8"/>
+						</reportElement>
+						<textElement>
+							<font size="26" isBold="false"/>
+						</textElement>
+						<text><![CDATA[Categoria:]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="35">
+				<staticText>
+					<reportElement x="2" y="14" width="100" height="18" uuid="2d9bc444-5e93-46b4-b00a-184056bd4f23"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Total Categoria:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="500" y="13" width="51" height="20" printWhenGroupChanges="categoriaForn" uuid="080bb86d-d3d4-4b32-a89c-994ddc32d339"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{numFornecedores}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="60" backcolor="#000000" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<staticText>
+					<reportElement style="Title" x="130" y="0" width="370" height="66" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Fornecedores]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="555" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="2" y="12" width="116" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="43" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
+				<staticText>
+					<reportElement x="2" y="5" width="58" height="34" uuid="c747fde0-db74-4551-b034-ac46966b71ff"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[ID:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="340" y="6" width="76" height="33" uuid="afc70f34-bbe8-4915-82e8-5805b518a26e"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[Nome:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="70" y="6" width="140" height="33" uuid="85e8767b-41b7-4738-b890-f8a9df014c8c"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fornecedorID}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="420" y="6" width="86" height="32" uuid="0286be9b-c915-4ba8-b375-ad93abf37e51"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="2" y="40" width="535" height="1" uuid="4ddfcddc-da88-484c-ab3b-cc9d9da590f3"/>
+				</line>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="1133a906-5b71-476e-9f3e-bc97c97058c1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
